@@ -1,0 +1,17 @@
+{
+    "name": "tatyana/task-forse",
+    "description": "desc",
+    "authors": [
+        {
+            "name": "Tatyana Goncharova",
+            "email": "123@example.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+
+}
