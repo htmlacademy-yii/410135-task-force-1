@@ -6,6 +6,8 @@
  * Time: 15:55
  */
 
+namespace App\component;
+
 class AvailableActions
 {
     private const STATUS_NEW = "Новое";
@@ -36,19 +38,28 @@ class AvailableActions
             self::STATUS_FAIL
         ]
     ];
+    private const ACTION_TO_STATUSE = [
+        self::ACTION_CREATE => self::STATUS_NEW,
+        self::ACTION_CANCEL => self::STATUS_CANCEL,
+        self::ACTION_RESPOND => self::STATUS_IN_WORK,
+        self::ACTION_DONE => self::STATUS_DONE,
+        self::ACTION_REFUSE => self::STATUS_FAIL
+    ];
+
 
     private $workerId;
     private $customerId;
     private $completionDate;
     private $activeStatus;
+    private $role;
 
-
-    public function __construct($workerId, $customerId, $completionDate, $activeStatus)
+    public function __construct($workerId, $customerId, $completionDate, $activeStatus,$role)
     {
         $this->workerId = $workerId;
         $this->customerId = $customerId;
         $this->completionDate = $completionDate;
         $this->activeStatus = $activeStatus;
+        $this->role = $role;
     }
 
     private function getAvailableActionsForCustomer()
@@ -80,9 +91,9 @@ class AvailableActions
         }
     }
 
-    public function getAvailableActions($role)
+    public function getAvailableActions()
     {
-        switch ($role) {
+        switch ($this->role ) {
             case self::CUSTOMER :
                 $this->getAvailableActionsForCustomer();
                 break;
@@ -94,27 +105,11 @@ class AvailableActions
         }
     }
 
-    public function getNextStatus($action)
+    public function getNextStatus(string $action) : string
     {
-        switch ($action) {
-            case self::ACTION_CREATE :
-                return self::STATUS_NEW;
-                break;
-            case self::ACTION_CANCEL :
-                return self::STATUS_CANCEL;
-                break;
-            case self::ACTION_RESPOND :
-                return self::STATUS_IN_WORK;
-                break;
-            case self::ACTION_DONE :
-                return self::STATUS_DONE;
-                break;
-            case self::ACTION_REFUSE :
-                return self::STATUS_FAIL;
-                break;
-            default :
-                return false;
-        }
+       if(isset(self::ACTION_TO_STATUSE[$action])){
+           return self::ACTION_TO_STATUSE[$action];
+       }
     }
 
 }
