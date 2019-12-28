@@ -56,10 +56,9 @@ class AvailableActions
         $this->activeStatus = $activeStatus;
         $this->currentId = $currentId;
     }
-
-    public function getAvailableAction()
+    public function getActionByStatus()
     {
-
+        $act = '';
         switch ($this->activeStatus) {
             case ActBase::STATUS_NEW :
                 $act = new ActCreate();
@@ -69,12 +68,18 @@ class AvailableActions
                 $act = new ActInWork();
                 break;
         }
+        return $act;
+
+    }
+
+    public function getAvailableAction()
+    {
+        $act = $this->getActionByStatus();
         if(!empty($act)){
             return $act->getAvailableAct($this->workerId,$this->customerId,$this->currentId);
         } else {
             return "Нет доступных статусов";
         }
-
     }
 
     public function getNextStatus(string $action) : string
