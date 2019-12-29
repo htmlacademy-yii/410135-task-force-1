@@ -8,100 +8,77 @@
 
 namespace App\component;
 
+use App\component\act\ActCreate;
+use App\component\act\ActInWork;
+use App\component\act\ActBase;
+
 class AvailableActions
 {
-    private const STATUS_NEW = "Новое";
-    private const STATUS_IN_WORK = "В работе";
-    private const STATUS_DONE = "Выполнено";
-    private const STATUS_CANCEL = "Отменено";
-    private const STATUS_FAIL = "Провалено";
-    private const ACTION_CREATE = "Создать";
-    private const ACTION_CANCEL = "Отменить";
-    private const ACTION_RESPOND = "Откликнуться";
-    private const ACTION_DONE = "Выполнено";
-    private const ACTION_REFUSE = "Отказаться";
-    private const CUSTOMER = "Заказчик";
-    private const WORKER = "Исполнитель";
-    public const ALL_ACTIONS_AND_STATUSES = [
+
+     const ALL_ACTIONS_AND_STATUSES = [
         "actions" => [
-            self::ACTION_CREATE,
-            self::ACTION_CANCEL,
-            self::ACTION_RESPOND,
-            self::ACTION_DONE,
-            self::ACTION_REFUSE
+            ActBase::ACTION_CREATE,
+            ActBase::ACTION_CANCEL,
+            ActBase::ACTION_RESPOND,
+            ActBase::ACTION_DONE,
+            ActBase::ACTION_REFUSE
         ],
         "statuses" => [
-            self::STATUS_NEW,
-            self::STATUS_IN_WORK,
-            self::STATUS_DONE,
-            self::STATUS_CANCEL,
-            self::STATUS_FAIL
+            ActBase::STATUS_NEW,
+            ActBase::STATUS_IN_WORK,
+            ActBase::STATUS_DONE,
+            ActBase::STATUS_CANCEL,
+            ActBase::STATUS_FAIL
         ]
     ];
-    private const ACTION_TO_STATUSE = [
-        self::ACTION_CREATE => self::STATUS_NEW,
-        self::ACTION_CANCEL => self::STATUS_CANCEL,
-        self::ACTION_RESPOND => self::STATUS_IN_WORK,
-        self::ACTION_DONE => self::STATUS_DONE,
-        self::ACTION_REFUSE => self::STATUS_FAIL
+     const ACTION_TO_STATUSE = [
+        ActBase::ACTION_CREATE => ActBase::STATUS_NEW,
+        ActBase::ACTION_CANCEL => ActBase::STATUS_CANCEL,
+        ActBase::ACTION_RESPOND => ActBase::STATUS_IN_WORK,
+        ActBase::ACTION_DONE => ActBase::STATUS_DONE,
+        ActBase::ACTION_REFUSE => ActBase::STATUS_FAIL
     ];
 
 
-    private $workerId;
-    private $customerId;
-    private $completionDate;
-    private $activeStatus;
-    private $role;
+    public $workerId;
+    public $customerId;
+    public $completionDate;
+    public $activeStatus;
+    public $role;
+    public $currentId;
+    public $availableAction;
 
-    public function __construct($workerId, $customerId, $completionDate, $activeStatus,$role)
+    public function __construct($workerId, $customerId, $completionDate, $activeStatus, $currentId)
     {
         $this->workerId = $workerId;
         $this->customerId = $customerId;
         $this->completionDate = $completionDate;
         $this->activeStatus = $activeStatus;
-        $this->role = $role;
+        $this->currentId = $currentId;
     }
-
-    private function getAvailableActionsForCustomer()
+    public function getActionByStatus()
     {
+        $act = '';
         switch ($this->activeStatus) {
-            case self::STATUS_NEW :
-                return self::ACTION_RESPOND;
+            case ActBase::STATUS_NEW :
+                $act = new ActCreate();
                 break;
-            case self::STATUS_IN_WORK :
-                return self::ACTION_REFUSE;
+
+            case ActBase::STATUS_IN_WORK :
+                $act = new ActInWork();
                 break;
-            default :
-                return false;
         }
+        return $act;
+
     }
 
-
-    private function getAvailableActionsForWorker()
+    public function getAvailableAction()
     {
-        switch ($this->activeStatus) {
-            case self::STATUS_NEW :
-                return self::ACTION_CANCEL;
-                break;
-            case self::STATUS_IN_WORK :
-                return self::ACTION_DONE;
-                break;
-            default :
-                return false;
-        }
-    }
-
-    public function getAvailableActions()
-    {
-        switch ($this->role ) {
-            case self::CUSTOMER :
-                $this->getAvailableActionsForCustomer();
-                break;
-            case self::WORKER :
-                $this->getAvailableActionsForWorker();
-                break;
-            default:
-                return false;
+        $act = $this->getActionByStatus();
+        if(!empty($act)){
+            return $act->getAvailableAct($this->workerId,$this->customerId,$this->currentId);
+        } else {
+            return "Нет доступных статусов";
         }
     }
 
