@@ -13,19 +13,19 @@ require_once "./vendor/autoload.php";
 use App\component\AvailableActions;
 
 
-$a = new AvailableActions(12,13,14,"Новое", 12);
+$a = new AvailableActions(12,13,"Новое", 12);
 echo " исполнитель  для статуса новое " . $a->getAvailableAction();
 
 
-$a = new AvailableActions(12,13,14,"Новое", 13);
+$a = new AvailableActions(12,13,"Новое", 13);
 echo " заказчик для статуса новое "  . $a->getAvailableAction();
 
-$a = new AvailableActions(12,13,14,"В работе", 12);
+$a = new AvailableActions(12,13,"В работе", 12);
 echo " исполнитель для статуса в работе " . $a->getAvailableAction();
 
-$a = new AvailableActions(12,13,14,"В работе", 13);
+$a = new AvailableActions(12,13,"В работе", 13);
 echo " заказчик для статуса в работе " . $a->getAvailableAction();
 
-$a = new AvailableActions(12,13,14,"Выполнено", 13);
+$a = new AvailableActions(12,13,"Выполнено", 13);
 echo " заказчик для статуса выполнено " . $a->getAvailableAction();
 
