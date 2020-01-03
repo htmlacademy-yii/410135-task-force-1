@@ -11,11 +11,12 @@ namespace App\component;
 use App\component\act\ActCreate;
 use App\component\act\ActInWork;
 use App\component\act\ActBase;
+use App\exc\DataException;
 
 class AvailableActions
 {
 
-     const ALL_ACTIONS_AND_STATUSES = [
+    const ALL_ACTIONS_AND_STATUSES = [
         "actions" => [
             ActBase::ACTION_CREATE,
             ActBase::ACTION_CANCEL,
@@ -31,7 +32,7 @@ class AvailableActions
             ActBase::STATUS_FAIL
         ]
     ];
-     const ACTION_TO_STATUSE = [
+    const ACTION_TO_STATUSE = [
         ActBase::ACTION_CREATE => ActBase::STATUS_NEW,
         ActBase::ACTION_CANCEL => ActBase::STATUS_CANCEL,
         ActBase::ACTION_RESPOND => ActBase::STATUS_IN_WORK,
@@ -42,23 +43,30 @@ class AvailableActions
 
     public $workerId;
     public $customerId;
-    public $completionDate;
     public $activeStatus;
     public $role;
     public $currentId;
     public $availableAction;
 
-    public function __construct($workerId, $customerId, $completionDate, $activeStatus, $currentId)
+    public function __construct(int $workerId, int $customerId, string $activeStatus, int $currentId)
     {
-        $this->workerId = $workerId;
-        $this->customerId = $customerId;
-        $this->completionDate = $completionDate;
-        $this->activeStatus = $activeStatus;
-        $this->currentId = $currentId;
+        try {
+            $this->workerId = $workerId;
+            $this->customerId = $customerId;
+            $this->currentId = $currentId;
+            if (in_array($activeStatus,self::ALL_ACTIONS_AND_STATUSES["statuses"])) {
+                $this->activeStatus = $activeStatus;
+            } else {
+                throw new DataException('Неверное название статуса');
+            }
+        } catch (DataException $e) {
+            echo $e->getMessage();
+        }
     }
-    public function getActionByStatus()
+
+    public function getActionByStatus():?ActBase
     {
-        $act = '';
+        $act = NULL;
         switch ($this->activeStatus) {
             case ActBase::STATUS_NEW :
                 $act = new ActCreate();
@@ -72,21 +80,27 @@ class AvailableActions
 
     }
 
-    public function getAvailableAction()
+    public function getAvailableAction(): ?string
     {
         $act = $this->getActionByStatus();
-        if(!empty($act)){
-            return $act->getAvailableAct($this->workerId,$this->customerId,$this->currentId);
-        } else {
-            return "Нет доступных статусов";
+        try{
+            if (!empty($act)) {
+                return $act->getAvailableAct($this->workerId, $this->customerId, $this->currentId);
+            } else {
+                throw new DataException('Нет доступных статусов');
+            }
+        } catch (DataException $e){
+            echo $e->getMessage();
         }
+        return NULL;
+
     }
 
-    public function getNextStatus(string $action) : string
+    public function getNextStatus(string $action): string
     {
-       if(isset(self::ACTION_TO_STATUSE[$action])){
-           return self::ACTION_TO_STATUSE[$action];
-       }
+        if (isset(self::ACTION_TO_STATUSE[$action])) {
+            return self::ACTION_TO_STATUSE[$action];
+        }
     }
 
 }
