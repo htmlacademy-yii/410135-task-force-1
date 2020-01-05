@@ -61,7 +61,7 @@ class ConvertCsvToSql
         if (empty($dataHead) || empty($dataInsert)) {
             throw new DataException('Недостаточно данных для записи в файле ' . $this->fileName);
         } else {
-            $sql = "INSERT INTO " . $this->tableName . $dataHead . " VALUES " . implode(", ", $dataInsert);
+            $sql = "INSERT INTO " . $this->tableName . $dataHead . " VALUES " . implode(", ", $dataInsert). "; ";
         }
         return $sql;
     }
