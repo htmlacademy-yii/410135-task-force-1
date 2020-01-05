@@ -31,11 +31,11 @@ echo " заказчик для статуса выполнено " . $a->getAvai
 */
 
 use App\sqlData\ConvertCsvToSql;
-$tables = ['tasks', 'users', 'categories', 'cities', 'response', 'user_role', 'statuses'];
+$tables = ['cities','user_role', 'users','categories', 'statuses',  'tasks',  'response'];
 $filePath = realpath("./data/");
 
 foreach ($tables as $table){
     $a = new ConvertCsvToSql($table.'.csv',$table);
     $sql = $a->getSql();
-    file_put_contents($filePath."/tab_".$table.".sql", $sql,FILE_APPEND | LOCK_EX);
+    file_put_contents($filePath."/tab_data.sql", $sql,FILE_APPEND | LOCK_EX);
 }

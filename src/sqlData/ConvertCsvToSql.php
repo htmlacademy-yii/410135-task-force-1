@@ -17,13 +17,13 @@ class ConvertCsvToSql
 
     function __construct($fileName, $tableName)
     {
-        try{
-            if(is_file(realpath("./data/".$fileName))){
-                $this->fileName = realpath("./data/".$fileName);
+        try {
+            if (is_file(realpath("./data/" . $fileName))) {
+                $this->fileName = realpath("./data/" . $fileName);
             } else {
                 throw new DataException(' Файла по заданному пути нет');
             }
-        } catch (DataException $e){
+        } catch (DataException $e) {
             echo $e->getMessage();
         }
         $this->tableName = $tableName;
@@ -31,8 +31,8 @@ class ConvertCsvToSql
 
     protected function readFile(): ?\SplFileObject
     {
-        $file = NULL;
-        if($this->fileName){
+        $file = null;
+        if ($this->fileName) {
             $file = new \SplFileObject($this->fileName);
             if (!$file) {
                 throw new DataException('Ошибка при открытии файла' . $this->fileName);
@@ -49,7 +49,7 @@ class ConvertCsvToSql
         $file->setFlags(\SplFileObject::READ_CSV);
         foreach ($file as $row) {
             if ($i == 0) {
-                $dataHead = " ( '" . implode("', '", $row) . "')";
+                $dataHead = " (" . implode(", ", $row) . ")";
                 $count = count($row);
 
             } elseif (count($row) === $count) {
@@ -71,8 +71,10 @@ class ConvertCsvToSql
         $sql = '';
         try {
             $file = $this->readFile();
-            if($file)
-            $sql = $this->getData($file);
+            if ($file) {
+                $sql = $this->getData($file);
+            }
+
         } catch (DataException $e) {
             echo $e->getMessage();
         }
