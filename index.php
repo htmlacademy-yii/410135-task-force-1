@@ -9,7 +9,7 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 require_once "./vendor/autoload.php";
-
+/*
 use App\component\AvailableActions;
 
 
@@ -28,4 +28,14 @@ echo " заказчик для статуса в работе " . $a->getAvailab
 
 $a = new AvailableActions(12,13,"Выполнено", 13);
 echo " заказчик для статуса выполнено " . $a->getAvailableAction();
+*/
 
+use App\sqlData\ConvertCsvToSql;
+$tables = ['cities','user_role', 'users','categories', 'statuses',  'tasks',  'response'];
+$filePath = realpath("./data/");
+
+foreach ($tables as $table){
+    $a = new ConvertCsvToSql($table.'.csv',$table);
+    $sql = $a->getSql();
+    file_put_contents($filePath."/tab_data.sql", $sql,FILE_APPEND | LOCK_EX);
+}
