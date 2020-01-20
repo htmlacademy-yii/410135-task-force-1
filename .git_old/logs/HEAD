@@ -1,0 +1,27 @@
+0000000000000000000000000000000000000000 2452e13be51fe1f2e46bd2a3d6e0196c455023cc Gusya <tvgoncharova@yandex.ru> 1571774382 +0300	commit (initial): start
+2452e13be51fe1f2e46bd2a3d6e0196c455023cc f012f441004edbae12907e144d84148762b3651a Gusya <tvgoncharova@yandex.ru> 1571776175 +0300	checkout: moving from module1-task1 to master
+f012f441004edbae12907e144d84148762b3651a 4746b900ca66961d81a57721f5bcb48242a490f7 Gusya <tvgoncharova@yandex.ru> 1571776316 +0300	commit: fonts
+4746b900ca66961d81a57721f5bcb48242a490f7 2452e13be51fe1f2e46bd2a3d6e0196c455023cc Gusya <tvgoncharova@yandex.ru> 1571776353 +0300	checkout: moving from master to module1-task1
+2452e13be51fe1f2e46bd2a3d6e0196c455023cc 7eddb07d520f9ceac9d872d761b8a17e8caa8387 Gusya <tvgoncharova@yandex.ru> 1571776629 +0300	commit: change readme file
+7eddb07d520f9ceac9d872d761b8a17e8caa8387 4746b900ca66961d81a57721f5bcb48242a490f7 Gusya <tvgoncharova@yandex.ru> 1572769759 +0300	reset: moving to origin/master
+4746b900ca66961d81a57721f5bcb48242a490f7 44913c27eeb4dd3bd98be026e7e5f9b11567ae4c Gusya <tvgoncharova@yandex.ru> 1572770389 +0300	commit: add name
+44913c27eeb4dd3bd98be026e7e5f9b11567ae4c 50686acafa6d27fc7a12774ec61a3e1950aa6bb0 Gusya <tvgoncharova@yandex.ru> 1573302096 +0300	commit: add ttf binary to attributes
+50686acafa6d27fc7a12774ec61a3e1950aa6bb0 4746b900ca66961d81a57721f5bcb48242a490f7 Gusya <tvgoncharova@yandex.ru> 1573303527 +0300	checkout: moving from module1-task1 to master
+4746b900ca66961d81a57721f5bcb48242a490f7 6e9c223eeb8ee153646cbfa5af5997d05ac5616f Gusya <tvgoncharova@yandex.ru> 1573303616 +0300	pull academy master: Fast-forward
+6e9c223eeb8ee153646cbfa5af5997d05ac5616f 6e9c223eeb8ee153646cbfa5af5997d05ac5616f Gusya <tvgoncharova@yandex.ru> 1573303667 +0300	checkout: moving from master to module1-task2
+6e9c223eeb8ee153646cbfa5af5997d05ac5616f 47b6445b3d884469a82b2078634a3cf3746fd32e Gusya <tvgoncharova@yandex.ru> 1573334189 +0300	commit: task3
+47b6445b3d884469a82b2078634a3cf3746fd32e dc2b400919709dfce7a9d761c8d8bc723870bb04 Gusya <tvgoncharova@yandex.ru> 1573941342 +0300	commit: task-3
+dc2b400919709dfce7a9d761c8d8bc723870bb04 0000000000000000000000000000000000000000 Gusya <tvgoncharova@yandex.ru> 1573941526 +0300	Branch: renamed refs/heads/module1-task2 to refs/heads/module1-task3
+0000000000000000000000000000000000000000 dc2b400919709dfce7a9d761c8d8bc723870bb04 Gusya <tvgoncharova@yandex.ru> 1573941526 +0300	Branch: renamed refs/heads/module1-task2 to refs/heads/module1-task3
+dc2b400919709dfce7a9d761c8d8bc723870bb04 6e9c223eeb8ee153646cbfa5af5997d05ac5616f Gusya <tvgoncharova@yandex.ru> 1575317445 +0300	checkout: moving from module1-task3 to master
+6e9c223eeb8ee153646cbfa5af5997d05ac5616f 4b4bd1eb604477073ebc440cbcc0686715ff445e Gusya <tvgoncharova@yandex.ru> 1575317463 +0300	pull academy master: Fast-forward
+4b4bd1eb604477073ebc440cbcc0686715ff445e 4b4bd1eb604477073ebc440cbcc0686715ff445e Gusya <tvgoncharova@yandex.ru> 1575317505 +0300	checkout: moving from master to module2-task1
+4b4bd1eb604477073ebc440cbcc0686715ff445e 1060506b465c99ca409b10985fc1ca791989f412 Gusya <tvgoncharova@yandex.ru> 1575317629 +0300	commit: tables sql
+1060506b465c99ca409b10985fc1ca791989f412 f2c24b436e7b4a0f57b3d29e89d97a6388a0ebce Gusya <tvgoncharova@yandex.ru> 1576360442 +0300	commit: new file tables.sql
+f2c24b436e7b4a0f57b3d29e89d97a6388a0ebce 4b4bd1eb604477073ebc440cbcc0686715ff445e Gusya <tvgoncharova@yandex.ru> 1576957846 +0300	checkout: moving from module2-task1 to master
+4b4bd1eb604477073ebc440cbcc0686715ff445e 7af521e13d198a594b985352cfca453b2eab8dd4 Gusya <tvgoncharova@yandex.ru> 1576957866 +0300	pull academy master: Fast-forward
+7af521e13d198a594b985352cfca453b2eab8dd4 7af521e13d198a594b985352cfca453b2eab8dd4 Gusya <tvgoncharova@yandex.ru> 1576957910 +0300	checkout: moving from master to module2-task2
+7af521e13d198a594b985352cfca453b2eab8dd4 7af521e13d198a594b985352cfca453b2eab8dd4 Gusya <tvgoncharova@yandex.ru> 1578773794 +0300	reset: moving to HEAD
+7af521e13d198a594b985352cfca453b2eab8dd4 7af521e13d198a594b985352cfca453b2eab8dd4 Gusya <tvgoncharova@yandex.ru> 1578773832 +0300	checkout: moving from module2-task2 to master
+7af521e13d198a594b985352cfca453b2eab8dd4 c073468b498e6ee69179eb767c651ec6d93b9924 Gusya <tvgoncharova@yandex.ru> 1578774015 +0300	pull academy master: Fast-forward
+c073468b498e6ee69179eb767c651ec6d93b9924 c073468b498e6ee69179eb767c651ec6d93b9924 Gusya <tvgoncharova@yandex.ru> 1578774147 +0300	checkout: moving from master to module4-task1

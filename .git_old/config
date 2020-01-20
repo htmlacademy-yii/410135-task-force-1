@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:TatyanaGoncharova/410135-task-force-1.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[remote "academy"]
+	url = git@github.com:htmlacademy-yii/410135-task-force-1.git
+	fetch = +refs/heads/*:refs/remotes/academy/*
