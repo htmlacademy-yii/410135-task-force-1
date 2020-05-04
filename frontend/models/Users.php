@@ -73,4 +73,8 @@ class Users extends \yii\db\ActiveRecord
     {
         return $this->hasOne(UserRole::className(), ['id' => 'role']);
     }
+    public function getCity()
+    {
+        return $this->hasOne(Cities::className(), ['id' => 'city_id']);
+    }
 }

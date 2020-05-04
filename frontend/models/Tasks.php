@@ -64,4 +64,12 @@ class Tasks extends \yii\db\ActiveRecord
             'cost' => 'Cost',
         ];
     }
+    public function getCity()
+    {
+        return $this->hasOne(Cities::className(), ['id' => 'city_id']);
+    }
+    public function getCategory()
+    {
+        return $this->hasOne(Categories::className(), ['id' => 'category_id']);
+    }
 }

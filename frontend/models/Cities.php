@@ -44,4 +44,9 @@ class Cities extends \yii\db\ActiveRecord
             'longCity' => 'Long City',
         ];
     }
+
+    public function getTask()
+    {
+        return $this->hasMany(Tasks::className(), ['city_id' => 'id']);
+    }
 }
